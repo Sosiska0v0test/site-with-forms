@@ -1,0 +1,461 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Inter:wght@400&display=swap");
+
+
+/* виділення тексту */
+::selection {
+	background-color: rgba(240, 166, 236, 0.5); /* колір фону та прозорість виділеного тексту */
+	color: #02a98b; /* колір виділеного тексту */
+  }
+
+
+body {
+	margin-top: 10px;
+	font-family: "Inter", sans-serif;
+	font-size: clamp(1.5rem, 3vw, 1.75rem);
+}
+
+article {
+	--photo-margin: clamp(1rem, 6vw, 2rem);
+	inline-size: min(100ch, 100% - 4rem);
+	margin-inline: auto;
+	margin-block-end: 10vh; /* відстань між формами */
+}
+
+h1 {
+	display: flex;
+	text-align: center;
+	font-size: clamp(1.5rem, 10vw, 6rem);
+	font-family: "Caveat", cursive;
+	background: linear-gradient(180deg, #4f67e3 0%, #ca4fc2 45%, #edba5d);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	justify-content: center; /* Вирівнювання по горизонталі */
+	align-items: center; /* Вирівнювання по вертикалі */
+	font-weight: bold;
+}
+
+
+p {
+	margin-block: 2.5rem;
+	letter-spacing: -0.025em;
+	line-height: 1.75em;
+	font-family: "URW Chancery L", cursive; 
+	font-size: 15px;
+	color: #656256;
+}
+
+
+/* *********************************
+			   ФОТО
+********************************* */
+
+/* Рамка для фото */
+figure {
+	position: relative;
+	display: grid; 
+	grid-template-areas: "photo" "caption";
+	gap: 1rem;
+	border: 1rem solid #E0E0E0; /* Рамка */
+	width: min(300px, 100%); /* Задає максимальну ширину контейнера */
+	background-color: #E0E0E0; 
+	rotate: var(--rotate, -3deg); /* повертає фото на градусній кут*/
+	border-radius: 0.125rem; /* Задає радіуси закруглення для кутів контейнера */
+}
+
+figure:nth-of-type(even) {
+	direction: rtl; /* Встановлює напрямок тексту справа наліво (right-to-left) */
+	--float: right; /* фото перемістити в право */
+	--rotate: 3deg; /* повертає фото на градусній кут*/
+	--offset: -2rem; /* вказує відступ від лівого краю фотографії */ 
+}
+
+figure div {
+	overflow: hidden; /* квадратні фото */
+	aspect-ratio: 1; /* пропорція сторін */
+}
+
+img {
+	width: 100%; /* фото будуть розтягнуті на всю ширину свого контейнера */
+}
+
+/* Підпис фото */
+figcaption {
+	height: 3.5rem; /* відстань тексту від фото на рамці */
+	font-family: "Caveat", cursive;
+	line-height: 1; /* міжрядковий інтервал */
+	font-size: 16px;
+}
+
+/* Розташування фото */
+
+	figure {
+		clear: both;  /* вирівнює фото */
+		float: var(--float, left); /* переміщає 2 фото в ліво */
+		margin-inline: 0 var(--photo-margin); /* Встановлює зовнішні відступи по горизонталі */
+		translate: var(--offset, -0.5rem) 0;/* для зсуву елемента вгору і не змінює горизонтальне положення елемента. */
+	}
+
+
+/* ******************************
+ 		Розділення екрану
+****************************** */
+
+.container {
+    display: flex;
+    flex-direction: row; /* розміщення елементів в ряд */
+}
+
+.left-sidebar {
+    flex: 70%; /* ліва частина 70%  */
+    background-color: #f0f0f0;
+}
+
+.right-sidebar {
+    flex: 30%; /* Права частина 30%  */
+    background-color: #E0E0E0;
+}
+
+/* ******************************
+ 		Навігація по сайту
+****************************** */
+
+.rectangle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E0E0E0;
+    min-height: 200px;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+nav a {
+	position: sticky;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #656256;
+    border: 2px solid #656256;
+    border-radius: 5px;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+	font-family: "URW Chancery L", cursive; 
+	    justify-content: center;
+}
+
+nav a:hover {
+    color: #DA8093;
+}
+
+
+	.butt {
+		text-decoration: none;
+		color: #656256;
+		background-color: #DA8093;
+		position: fixed;
+		bottom: 20px; 
+		right: 20px; 
+		padding: 8px 20px;
+		border-radius: 10px;
+		border: 1px solid;
+		font-size: 16px;
+		font-family: "URW Chancery L", cursive; 
+	}
+	
+
+/* *************************************
+            Refistration form
+************************************* */
+
+
+/* set img */
+
+.uploadpreview{
+	width:150px;
+	height:150px;
+	border:1px solid #E0E0E0; /* тонка рамка */
+	margin:0 auto 15px;
+	background-size:100% auto; /* розмір фонового зображення по ширині */
+	background-repeat:no-repeat;  /* заборона повторного фонового зображення */
+	background-position:center;
+  }
+  
+  .upload-wrap{ 
+	float:right;
+	width:200px;
+  }
+  
+  input[type="file"] { /* елемент вибору файла */
+	  color: transparent; /* робе колір вибора файла прозорим */
+	  width: 120px;
+	  margin: 0 auto;
+	  display: block; /* блочний елемент */
+  }
+
+  /* form */
+
+
+.wrapper{      /* загальний контейнер на сторінці */
+  width: 100%;  /*  Робить контейнер шириною на всю доступну ширину */
+  font-family: "URW Chancery L", cursive; 
+  font-weight: bold;
+}
+
+.wrapper .form .inputfield{
+	margin-top: 10px;
+  margin-bottom: 15px; /* відстань між комірками */
+  display: flex;
+  align-items: center;
+}
+
+.wrapper .form .inputfield label{     /* Цей селектор вказує на елементи <label> */
+   width: 200px;   /* ширина міток */
+   color: #757575;   
+   margin-right: 10px;
+  font-size: 14px;  /* Цей селектор вказує на елементи <label> */
+  
+}
+
+.wrapper .form .inputfield .input,
+.wrapper .form .inputfield .textarea{
+  width: 100%;   /* ширина для поля вводу*/
+  outline: none;  
+  border: 2px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px; /* внутрішній відступ (падінг) для вводу і текстової області зверху і знизу */
+  border-radius: 3px;
+  transition: all 0.3s ease;  /* плавний перехід */
+  
+}
+
+.wrapper .form .inputfield .textarea{
+  width: 100%;
+  height: 100px;   /* висота для поля "Your home address"*/
+  resize: none;  /* Забороняє зміну розміру текстової області користувачем */
+}
+
+.wrapper .form .inputfield .custom_select{  /* комірка для "Gender:"*/
+  width: 100%;
+  height: 37px;
+}
+
+
+.wrapper .form .inputfield .custom_select select{
+  width: 100%;
+  height: 100%;
+  border: 1px solid #656256;
+  border-radius: 3px;   /* закруглення країв комірки для "Gender:"*/
+  font-family: "URW Chancery L", cursive; 
+}
+
+.wrapper .form .inputfield .check{  /* для Agree to the terms: */
+  width: 15px;
+  height: 15px;
+  position: relative;/* дозволяє використовувати позиціонування відносно цього елемента  */
+  cursor: pointer; /* Змінює вид курсору на вказівник (pointer) */
+}
+.wrapper .form .inputfield .check input[type="checkbox"]{  /* задається вигляд квадратика для відмітки */
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.wrapper .form .inputfield .check .checkmark{ /* параметри маркера */
+  width: 15px;    
+  height: 15px;
+  border: 1px solid #656256;
+  display: block;
+  position: relative;  /* позиція галочки */
+}
+.wrapper .form .inputfield .check .checkmark:before{
+  content: ""; /*  вміст псевдоелемента  як порожній рядок */
+  position: absolute; /* дозволяє точно визначити його положення */ 
+  top: 1px;
+  left: 2px;
+  width: 5px;
+  height: 2px;
+  border: 2px solid;
+  border-color: transparent transparent #d5dbd9 #d5dbd9; /* галочка */
+  transform: rotate(-45deg); /* Застосовує обертання псевдоелемента  */
+  display: none; /* поява маркера післа натиску на кнопку */
+}
+
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark{ /* заливка квадратика для згоди */
+  background: #656256;
+}
+
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{  /* відображення галочки після натискання */
+  display: block; 
+}
+  
+  /* Стили для червоних зірок*/
+
+
+.btn {  
+	width: 100%;
+	margin: 18px 0 9px 0;
+  }
+
+/* *************************************
+                  star
+************************************* */
+.required::after {
+    content: " *";
+    color: red;
+}
+
+/* *************************************
+            Login form
+************************************* */
+  
+  .btn {
+	padding: 8px 20px;
+	border-radius: 10px;
+	border: 1px solid;
+	font-size: 16px;
+	font-family: "URW Chancery L", cursive; 
+
+	&::before {
+	  position: absolute;
+	}
+	&:hover {
+		background:  #DA8093;
+
+	}
+  }
+  
+  .form-input-material {
+	input {
+		color: white;
+		width: 100%; /* Занимать всю доступную ширину */
+	}
+  }
+  
+  .login-form {
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	color: white;
+	background: #656256;
+	border-radius: 10px; /* Закругление углов формы */
+	font-family: "URW Chancery L", cursive;
+  
+	.form-input-material {
+	  margin: 20px;
+	  margin-left: 750px;
+	}
+}
+
+
+/* ********************************
+     ФОРМА ЗВОРОТНЬОГО ЗВ'ЯЗКУ
+********************************* */
+
+.left {
+    width: 45%; /* Ширина лівої частини форми */
+    float: left;
+    padding-right: 5%; /* Додаємо невеликий відступ між лівою та правою частиною форми */
+}
+.right {
+    width: 45%; /* Ширина правої частини форми */
+    float: left;
+}
+
+/* Інші стилі залишаються без змін */
+.main {
+    border-radius: 10px;
+    border: 5px solid #656256;
+    border-left: 7px solid #656256;
+    font-family: "URW Chancery L", cursive;
+	color: #656256;
+}
+
+.info{ 
+	width: 100%;
+	background-color: #656256;
+}
+.form-box{
+	padding: 20px;   /* відстань комірок від основної границі в формі */
+	background-color: #eee;	
+}
+
+.inp,.msg-box{
+	width: 100%;
+	padding: 10px;  /* розмір комірок */
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 2px solid #656256;
+	font-weight: bold;
+	color: #656256;
+
+	/* Колір і ргозмір комірок форми до натиксу */
+	border-right: 15px solid #656256;
+	border-left: 15px solid #656256;
+	resize: none;
+}
+/* Розмір комірки для Message */
+.msg-box{  
+	height: 100px;
+}
+.inp:focus,.msg-box:focus{ /* Колір і розмір комірок форми після натиксу */
+	outline: none; /* без границі комірок */
+	border: 2px solid #DA8093;
+	border-right: 15px solid #DA8093;
+	border-left: 15px solid #DA8093;
+}
+.sub-btn{
+	width: 100%;
+	cursor: pointer;  /* зміна курсора мишки при наведенні на кнопку*/
+	color: black;
+	border-radius: 10px;
+	border: 1px solid;
+	font-size: 20px;
+	font-family: "URW Chancery L", cursive; 
+	margin-top: 40px;
+
+	&::before {
+		position: absolute;
+	  }
+	  &:hover {
+		  background:  #DA8093;
+  
+	  }
+	}
+	
+
+
+/* ******************************
+             FOOTER
+****************************** */
+
+
+footer {
+	margin-top: 100px;
+  }
+
+
+.footer-icons {
+	display: flex;
+	justify-content: center; /* Вирівнювання по горизонталі по центру */
+	align-items: center; /* Вирівнювання по вертикалі по центру */
+}
+  
+  .footer-icons a {
+	margin: 40px;
+  }
+  
+  .footer-icons img {
+	width: 40px;
+	height: 40px;
+  }
+  
